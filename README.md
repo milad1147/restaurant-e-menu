@@ -1,24 +1,24 @@
 Tablet Choise
 =============
 Python course project, FMI, Sofia University
+--------------------------------------------
 
-(I'll translate this)
-Проектът представлява система за електронни поръчки в ресторант. Ще включва меню, което ще е мобилно приложение, администратовна част за редакция и добавяне на артикули, приложение, което ще се използва на бара и в кухнятa и сървърна част която ще е обща. Комуникацията със сървърната част ще е през http с json. 
-Мисля да разработя само сървърната част и някакваи прости уеб интерфейси за тестване. 
+Tablet Choise will be a system for electronic orders in restaurants. 
+It will include mobile app, which will be installed on tablets that will be given to the customers to order, admin page for managing the menu, client app for the bar and the kitchen and server.
+I'll develop only the server part for the Python course and will use simple web forms for testing. 
 
-Ще включва: 
+Features:
+ * Log in system
+ * Orders - when an order is made an notifcation will be sent to the kitchen and to the bar.
+ * When the order is delivered to the table, the waiter checks that it is delivered 
+ * The administrator can add, edit and delete items on the menu
 
-Log in система с различи права на достъп - сервитьор, барман, готвач, и шефче 
-Сервитьорът въвежда парола и избира маса след което подава таблетът на клиентите да си поръчат. 
-При поръчка в кухнята и на бара излиза съобщение за поръчаните артикули. 
-Когато храната е готова готвачът отбелязва, че е готова и съобщението се скрива. 
-Шефът може да добавя и редактира артикулите в менюто. 
-Извикване на сметката за дадена маса - връща списък с всички поръчани артикули и общата цена. 
-Може да се интегрира с фискален принтер някой ден и направо да печата касови бележки. 
+Additional features that might be imlemented:
+ * Voting for menu items
+ * Comments for the menu items
 
-Възможни допълнителни функции: 
-Гласуване за разлчните артикули с оценка от 1 до 5. 
-Добавяне на коментар към дадена манджа или за самото заведение (препоръки и забележки). 
-Най-поръчвани; 
-Най-харесвани; 
-Препоръчани от заведението. 
+
+To be done in the next 2 weeks:
+ * The database
+ * Test the comunication between python the database
+ * The architecture of the system
