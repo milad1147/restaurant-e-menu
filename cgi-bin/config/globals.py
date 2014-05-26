@@ -1,0 +1,3 @@
+mysqlUser = 'root'
+mysqlPass = ''
+dataBase = ''
