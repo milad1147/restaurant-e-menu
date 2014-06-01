@@ -1,3 +1,3 @@
 mysqlUser = 'root'
 mysqlPass = ''
-dataBase = ''
+dataBase = 'tablet_choise'
