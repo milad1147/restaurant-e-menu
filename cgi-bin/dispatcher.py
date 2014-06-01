@@ -1,5 +1,5 @@
 import cgi
-from http import cookies
+import json
 from controller.admin import *
 from config.classes import *
 
@@ -9,9 +9,8 @@ methodName = 'getAllItems'  # this will be Post param
 
 controller = classes[className]()
 result = controller.call(methodName)
-
 print()
-print(result)
+print(json.dumps(result))
 
 cur.close()
 conn.close()
