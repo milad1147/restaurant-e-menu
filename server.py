@@ -4,6 +4,9 @@ import socketserver
 PORT = 8000
 
 Handler = http.server.CGIHTTPRequestHandler
-httpd = socketserver.TCPServer(("localhost", PORT), Handler)
+s = socketserver.TCPServer
+s.server_name = ''  # Without this I it does not work
+s.server_port = ''
+httpd = s(("localhost", PORT), Handler)
 print("serving at port", PORT)
 httpd.serve_forever()
