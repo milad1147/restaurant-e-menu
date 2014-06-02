@@ -8,12 +8,13 @@ class Item:
 
     @staticmethod
     def getAllItems():
-        cur.execute("SELECT name, price, short_description FROM item")
+        cur.execute("SELECT id_item, name, short_description, price FROM item")
         items = []
         for item in cur.fetchall():
             items.append({
-                'name': item[0],
+                'id': item[0],
+                'name': item[1],
                 'short_description': item[2],
-                'price': float(item[1])
+                'price': float(item[3])
             })
         return items
