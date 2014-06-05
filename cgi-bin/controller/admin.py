@@ -4,5 +4,5 @@ from model.item import *
 
 class AdminController(Controller):
 
-    def getAllItems(self):
+    def getAllItems(self, params):
         return Item.getAllItems()
