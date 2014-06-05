@@ -16,7 +16,7 @@ class Controller:
                     'message': 'access denied'
                 }
         except Exception as e:
-            return {'status': False, 'message': e}
+            return {'status': False, 'message': str(e)}
 
     def checkPermissions(self, methodName):
         return True
