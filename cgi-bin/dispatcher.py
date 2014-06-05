@@ -1,5 +1,6 @@
 import cgi
 import json
+from pso.service import ServiceHandler
 from controller.admin import *
 from config.classes import *
 
@@ -14,5 +15,6 @@ except Exception as e:
     result = {'status': False, 'message': str(e)}
 
 DbHandler.close()
+print("Content-Type: text/json;charset=utf-8")
 print()
 print(json.dumps(result))
