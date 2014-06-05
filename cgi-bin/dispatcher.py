@@ -1,6 +1,5 @@
 import cgi
 import json
-from pso.service import ServiceHandler
 from controller.admin import *
 from config.classes import *
 
