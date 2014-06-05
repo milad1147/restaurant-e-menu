@@ -16,9 +16,3 @@ Features:
 Additional features that might be imlemented:
  * Voting for menu items
  * Comments for the menu items
-
-
-To be done in the next 2 weeks:
- * The database
- * Test the comunication between python the database
- * The architecture of the system
