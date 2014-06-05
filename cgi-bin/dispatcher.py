@@ -12,5 +12,4 @@ result = controller.call(methodName)
 print()
 print(json.dumps(result))
 
-cur.close()
-conn.close()
+DbHandler.close()

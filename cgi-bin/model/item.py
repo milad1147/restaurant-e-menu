@@ -1,4 +1,4 @@
-from .db import *
+from .dbhandler import *
 
 
 class Item:
@@ -8,6 +8,8 @@ class Item:
 
     @staticmethod
     def getAllItems():
+        dbh = DbHandler.getInstance()
+        cur = dbh.cur
         cur.execute("SELECT id_item, name, short_description, price FROM item")
         items = []
         for item in cur.fetchall():
