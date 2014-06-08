@@ -1,6 +1,5 @@
 import cgi
 import json
-from controller.admin import *
 from config.classes import *
 
 params = cgi.FieldStorage()
