@@ -35,3 +35,11 @@ class Session:
                     WHERE `sid` =  '{sid}';
                     """.format(sid=self.sid, data=json.dumps(self.data)))
         self.dbHandler.conn.commit()
+
+    @staticmethod
+    def destroy(sid):
+        dbHandler = DbHandler.getInstance()
+        dbHandler.cur.execute("""DELETE FROM `user_session`
+                                WHERE `sid` =  '{sid}';
+                                """.format(sid=sid))
+        dbHandler.conn.commit()
