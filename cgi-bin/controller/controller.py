@@ -16,7 +16,7 @@ class Controller:
     def checkPermissions(self, methodName):
         return True
 
-    def getInputParams(cgiFieldStorage):
+    def getInputParams(self, cgiFieldStorage):
         params = {}
         for key in cgiFieldStorage:
             params[key] = cgiFieldStorage.getvalue(key)
