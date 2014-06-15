@@ -9,7 +9,7 @@ class Session:
         self.dbHandler = DbHandler.getInstance()
         self.cur = self.dbHandler.cur
         self.cur.execute("""SELECT data FROM `user_session`
-                    WHERE sid='{sid}'
+                    WHERE sid='{sid}' AND expires > NOW()
                     """.format(sid=sid))
         if (self.cur.rowcount > 0):
             session = self.cur.fetchone()
