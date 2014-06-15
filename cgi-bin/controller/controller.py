@@ -38,9 +38,8 @@ class Controller:
         result = {
             'status': False
         }
-        if (message is not None){
+        if message is not None:
             result['message'] = message
-        }
         return self.out(result)
 
     def out(self, result):
