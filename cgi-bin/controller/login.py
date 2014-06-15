@@ -10,8 +10,8 @@ from model.session import *
 class LogInController(Controller):
 
     def logIn(self, params):
-        username = params.getfirst("username")
-        password = params.getfirst("password")
+        username = params["username"]
+        password = params["password"]
 
         user = User(username, password)
 
