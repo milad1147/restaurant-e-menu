@@ -1,3 +1,6 @@
+import json
+
+
 class Controller:
     def __init__(self):
         pass  # TODO
@@ -6,15 +9,9 @@ class Controller:
         if self.checkPermissions(methodName):
             params = self.getInputParams(cgiFieldStorage)
             result = getattr(self, methodName)(params)
-            return {
-                'status': True,
-                'data': result
-            }
+            return self.resultOut(result)
         else:
-            return {
-                'status': False,
-                'message': 'access denied'
-            }
+            return self.errorOut(message)
 
     def checkPermissions(self, methodName):
         return True
@@ -24,3 +21,27 @@ class Controller:
         for key in cgiFieldStorage:
             params[key] = cgiFieldStorage.getvalue(key)
         return params
+
+    def resultOut(self, data=None):
+        result = {
+            'status': True,
+        }
+
+        if data is not None:
+            if isinstance(data, bool):
+                result['status'] = data
+            else:
+                result['data'] = data
+        return self.out(result)
+
+    def errorOut(self, message=None):
+        result = {
+            'status': False
+        }
+        if (message is not None){
+            result['message'] = message
+        }
+        return self.out(result)
+
+    def out(self, result):
+        return json.dumps(result)
