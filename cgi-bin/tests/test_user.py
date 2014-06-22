@@ -7,7 +7,7 @@ class UserTest(unittest.TestCase):
     def test_instance(self):
         user = User('vankata', '123')
         self.assertEqual(user.username, 'vankata')
-        self.assertEqual(user.userRoles, [1, 4])
+        self.assertEqual(user.userRoles, [1, 2])
 
     def test_wrong_pass(self):
         self.assertRaises(ValueError, User, 'vankata', '1234')

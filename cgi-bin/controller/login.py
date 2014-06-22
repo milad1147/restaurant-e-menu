@@ -12,7 +12,6 @@ class LogInController(Controller):
     def logIn(self, params):
         username = params["username"]
         password = params["password"]
-
         user = User(username, password)
 
         cookie = cookies.SimpleCookie()
@@ -25,7 +24,7 @@ class LogInController(Controller):
         session.addData('userRoles', user.userRoles)
 
         print(cookie)
-        return {'user': username}
+        return {'user': username, 'sid': sid}
 
     def logOut(self, params):
         cookie = cookies.SimpleCookie()

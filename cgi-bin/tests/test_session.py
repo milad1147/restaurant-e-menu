@@ -3,7 +3,7 @@ from model.session import *
 from model.dbhandler import *
 
 
-class UserTest(unittest.TestCase):
+class SessionTest(unittest.TestCase):
 
     def test_instance(self):
         session = Session('123')

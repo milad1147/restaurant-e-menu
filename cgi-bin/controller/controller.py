@@ -24,7 +24,7 @@ class Controller:
 
     def resultOut(self, data=None):
         result = {
-            'status': True,
+            'success': True,
         }
 
         if data is not None:
@@ -36,7 +36,7 @@ class Controller:
 
     def errorOut(self, message=None):
         result = {
-            'status': False
+            'success': False
         }
         if message is not None:
             result['message'] = message
