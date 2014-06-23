@@ -1,33 +1,25 @@
 Ext.define('LogIn', {
     extend: 'Ext.form.Panel',
-    title: 'Tablet Choise Admin',
     alias: 'widget.logIn',
     itemid: 'loginform',
     
-    // The form will submit an AJAX request to this URL when submitted
     url: '/cgi-bin/dispatcher.py?controllerClass=login&method=logIn',
 
-    // Fields will be arranged vertically, stretched to full width
-    layout: 'anchor',
     defaults: {
-        anchor: '100%'
-    },
-
-    // The fields
-    items: [{
         xtype: 'textfield',
+        allowBlank: false,
+    },
+    items: [{
         fieldLabel: 'Username',
         name: 'username',
-        allowBlank: false
+        padding: '100px 0 0 150px',
     },{
-        xtype: 'textfield',
         inputType: 'password',
         fieldLabel: 'Password',
         name: 'password',
-        allowBlank: false
+        padding: '10px 0 0 150px',
     }],
 
-    // Reset and Submit buttons
     buttons: [{
         text: 'Reset',
         handler: function() {
@@ -35,7 +27,7 @@ Ext.define('LogIn', {
         }
     }, {
         text: 'Submit',
-        formBind: true, //only enabled once the form is valid
+        formBind: true,
         disabled: true,
         handler: function() {
             var me = this;
@@ -43,7 +35,6 @@ Ext.define('LogIn', {
             if (form.isValid()) {
                 form.submit({
                     success: function(form, action) {
-                       console.log('Success', action.result.data);
                        sessionId = action.result.data.sid; // needs to be global
                        viewport.getLayout().setActiveItem('itemsList');
                     },
