@@ -4,6 +4,7 @@ Ext.define('ItemsList', {
     alias: 'widget.itemsList',
         items: [{
             xtype: 'grid',
+            id: 'itemsListGrid',
             title: 'Items',
             region: 'center',
             store: Ext.create('itemsStore'),
@@ -36,7 +37,7 @@ Ext.define('ItemsList', {
                 }
             }]
         }, {
-            itemid: 'categories',
+            id: 'categories',
             xtype: 'treepanel',
             region: 'west',
             store: Ext.create('CategoryTreeStore'),
@@ -44,7 +45,15 @@ Ext.define('ItemsList', {
             rootVisible: false,
             title: 'Categories',
             useArrows: true,
-
+            currentCategory: 0,
+            listeners: {
+                'select': function( grid, record, index, eOpts ){
+                        viewport.down('#itemsListGrid').getStore().reload({
+                            params: {category_id: record.get('id')}
+                        });
+                        grid.currentCategory = record.get('id');
+                }
+            },
             columns: [{
                 xtype: 'treecolumn',
                 text: 'Name',
