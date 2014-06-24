@@ -4,14 +4,37 @@ Ext.define('ItemsList', {
     alias: 'widget.itemsList',
         items: [{
             xtype: 'grid',
+            title: 'Items',
             region: 'center',
             store: Ext.create('itemsStore'),
             columns: [
                 { text: 'Id',  dataIndex: 'id' },
                 { text: 'Name', dataIndex: 'name', flex: 1 },
                 { text: 'Short Descrition', dataIndex: 'shortDescription', flex: 1 },
-                { text: 'Price', dataIndex: 'price' }
-            ]
+                { text: 'Price', dataIndex: 'price' },
+            {
+                text: 'Edit',
+                width: 40,
+                menuDisabled: true,
+                xtype: 'actioncolumn',
+                tooltip: 'Edit category',
+                align: 'center',
+                icon: 'img/edit.png',
+                handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+                    Ext.Msg.alert('Editing' , record.get('name'));
+                },
+            }, {
+                text: 'Delete',
+                width: 40,
+                menuDisabled: true,
+                xtype: 'actioncolumn',
+                tooltip: 'Delete category',
+                align: 'center',
+                icon: 'img/bin.png',
+                handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
+                    Ext.Msg.alert('Deleting', record.get('name'));
+                }
+            }]
         }, {
             itemid: 'categories',
             xtype: 'treepanel',
@@ -38,10 +61,9 @@ Ext.define('ItemsList', {
                 xtype: 'actioncolumn',
                 tooltip: 'Edit category',
                 align: 'center',
-                icon: '../simple-tasks/resources/images/edit_task.png',
+                icon: 'img/edit.png',
                 handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-                    debugger;
-                    Ext.Msg.alert('Editing' + (record.get('done') ? ' category ' : '') , record.get('catName'));
+                    Ext.Msg.alert('Editing', record.get('catName'));
                 },
             }, {
                 text: 'Delete',
@@ -50,11 +72,10 @@ Ext.define('ItemsList', {
                 xtype: 'actioncolumn',
                 tooltip: 'Delete category',
                 align: 'center',
-                icon: '../simple-tasks/resources/images/edit_task.png',
+                icon: 'img/bin.png',
                 handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-                    Ext.Msg.alert('Deleting' + (record.get('done') ? ' category ' : '') , record.get('catName'));
+                    Ext.Msg.alert('Deleting', record.get('catName'));
                 },
-                // Only leaf level tasks may be edited
                 isDisabled: function(view, rowIdx, colIdx, item, record) {
                     return !record.data.leaf;
                 }
