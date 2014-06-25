@@ -4,7 +4,7 @@ from .dbhandler import *
 
 class Category:
 
-    def __init__(self, id):
+    def __init__(self, params):
         pass  # TODO
 
     @staticmethod
@@ -14,6 +14,7 @@ class Category:
         cur.execute("""SELECT
                          id_category,
                          name,
+                         description,
                          ifnull(parent_category,0)
                         FROM category
                         ORDER BY parent_category ASC""")
@@ -22,13 +23,13 @@ class Category:
             categories.append({
                 'id': category[0],
                 'name': category[1],
-                'parent': category[2],
+                'description': category[2],
+                'parent': category[3],
             })
         return Category.parseTree(categories, 0)
 
     @staticmethod
     def parseTree(tree, root):
-        # http://stackoverflow.com/questions/2915748/how-can-i-convert-a-series-of-parent-child-relationships-into-a-hierarchical-tre
         result = []
         for i in range(0, len(tree)):
             category = tree[i]
@@ -37,6 +38,8 @@ class Category:
                 cat = {
                     'id': category['id'],
                     'catName': category['name'],
+                    'description': category['description'],
+                    'parent': category['parent']
                 }
                 if data is not None:
                     cat['data'] = data

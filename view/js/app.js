@@ -17,6 +17,10 @@ Ext.onReady(function(){
             xtype: 'itemsList',
             id: 'itemsList',
             title: 'Tablet Choise Admin',
+        }, {
+            xtype: 'CategoryEdit',
+            id: 'categoryEdit',
+            title: 'Tablet Choise Admin',
         }]
     });
 });

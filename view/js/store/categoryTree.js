@@ -1,9 +1,6 @@
 Ext.define('CategoryTreeStore', {
     extend: 'Ext.data.TreeStore',
-    fields: [
-        {name: 'catName', type: 'string'},
-        {name: 'itemsCount', type: 'int'},
-    ],
+    model: 'Category',
     proxy: {
         type: 'ajax',
          url: '/cgi-bin/dispatcher.py',

@@ -13,11 +13,13 @@ Ext.define('LogIn', {
         fieldLabel: 'Username',
         name: 'username',
         padding: '100px 0 0 150px',
+        value: 'vankata'
     },{
         inputType: 'password',
         fieldLabel: 'Password',
         name: 'password',
         padding: '10px 0 0 150px',
+        value: '123'
     }],
 
     buttons: [{

@@ -13,3 +13,9 @@ class AdminController(Controller):
 
     def getCategories(self, params):
         return Category.getTree()
+
+    def updateCategory(self, params):
+        pass
+
+    def addCategory(self, params):
+        return params  # TODO
