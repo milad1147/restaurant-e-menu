@@ -10,12 +10,12 @@ class User:
                     RIGHT JOIN `user_roles` AS ur ON u.id_user = ur.id_user
                     WHERE username='{username}' and password=sha1('{password}')
                     """.format(username=username, password=password))
-        if (cur.rowcount > 0):
-            userRoles = []
-            for row in cur.fetchall():
-                userRoles.append(row[0])
-
-            self.username = username
-            self.userRoles = userRoles
-        else:
+        if (cur.rowcount == 0):
             raise ValueError("Wrong username or password!")
+
+        userRoles = []
+        for row in cur.fetchall():
+            userRoles.append(row[0])
+
+        self.username = username
+        self.userRoles = userRoles
