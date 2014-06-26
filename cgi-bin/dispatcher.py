@@ -10,7 +10,7 @@ try:
     controller = classes[className]()
     result = controller.call(methodName, cgiFieldStorage)
 except Exception as e:
-    result = json.dumps({'status': False, 'message': str(e)})
+    result = json.dumps({'success': False, 'message': str(e)})
 
 DbHandler.close()
 print("Content-Type: text/json;charset=utf-8")
