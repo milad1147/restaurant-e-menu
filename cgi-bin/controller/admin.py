@@ -15,7 +15,19 @@ class AdminController(Controller):
         return Category.getTree()
 
     def updateCategory(self, params):
-        pass
+        keys = ('name', 'description', 'parent')
+        catData = {k: v for k, v in params.items() if k in keys}
+        cat = Category(params['id'])
+        cat.set(**catData)
+        cat.save()
 
     def addCategory(self, params):
-        return params  # TODO
+        keys = ('name', 'description', 'parent')
+        catData = {k: v for k, v in params.items() if k in keys}
+        cat = Category()
+        cat.set(**catData)
+        cat.save()
+
+    def deleteCategory(self, params):
+        cat = Category(params['id'])
+        return cat.delete()

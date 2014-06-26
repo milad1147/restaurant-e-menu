@@ -28,7 +28,7 @@ Ext.define('ItemsList', {
                 xtype: 'treecolumn',
                 text: 'Name',
                 width: 200,
-                dataIndex: 'catName',
+                dataIndex: 'name',
             }, {
                 text: 'Edit',
                 width: 40,
@@ -50,7 +50,19 @@ Ext.define('ItemsList', {
                 align: 'center',
                 icon: 'img/bin.png',
                 handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-                    Ext.Msg.alert('Deleting', record.get('catName'));
+                    Ext.Ajax.request({
+                        url: '/cgi-bin/dispatcher.py?controllerClass=admin&method=deleteCategory',
+                        params: {
+                            id: record.get('id')
+                        },
+                        success: function(response){
+                            Ext.Msg.alert('Success', 'Deleted ' + record.get('name'));
+                            viewport.down('#categories').getStore().reload();
+                        },
+                        failure: function(response, opts) {
+                            Ext.Msg.alert('Error', 'Failed to delete ' + record.get('name'));
+                        }
+                    });
                 },
                 isDisabled: function(view, rowIdx, colIdx, item, record) {
                     return !record.data.leaf;
@@ -102,7 +114,18 @@ Ext.define('ItemsList', {
                 align: 'center',
                 icon: 'img/bin.png',
                 handler: function(grid, rowIndex, colIndex, actionItem, event, record, row) {
-                    Ext.Msg.alert('Deleting', record.get('name'));
+                    Ext.Ajax.request({
+                        url: '/cgi-bin/dispatcher.py?controllerClass=admin&method=deleteItem',
+                        params: {
+                            id: record.get('id')
+                        },
+                        success: function(response){
+                            Ext.Msg.alert('Success', 'Deleted ' + record.get('name'));
+                        },
+                        failure: function(response, opts) {
+                            Ext.Msg.alert('Error', 'Failed to delete ' + record.get('name'));
+                        }
+                    });
                 }
             }]
         }]

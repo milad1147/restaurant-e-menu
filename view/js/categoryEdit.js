@@ -4,15 +4,15 @@ Ext.define('CategoryEdit', {
     itemid: 'categoryEdit',
 
     defaults: {
-        xtype: 'textfield',
         padding: '5px 0 0 150px',
     },
     items: [{
         xtype: 'hiddenfield',
         name: 'id',
     }, {
+        xtype: 'textfield',
         fieldLabel: 'Category name',
-        name: 'catName',
+        name: 'name',
         padding: '100px 0 0 150px',
         allowBlank: false
     }, {
@@ -20,6 +20,7 @@ Ext.define('CategoryEdit', {
         fieldLabel: 'description',
         name: 'description',
     }, {
+        xtype: 'numberfield',
         fieldLabel: 'Parent',
         name: 'parent',
         allowBlank: false
