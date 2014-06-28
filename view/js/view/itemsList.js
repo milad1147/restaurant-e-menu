@@ -67,20 +67,6 @@ Ext.define('ItemsList', {
                 isDisabled: function(view, rowIdx, colIdx, item, record) {
                     return !record.data.leaf;
                 }
-            }],
-            dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'top',
-                items: [{
-                    xtype: 'button',
-                    text : 'Add category',
-                    icon: 'img/add.png',
-                    handler: function() {
-                        var newRecord = Ext.create('Category');
-                        viewport.down('#categoryEdit').getForm().loadRecord(newRecord);
-                        viewport.getLayout().setActiveItem('categoryEdit');
-                    },
-                }]
             }]
         }, {
             xtype: 'grid',

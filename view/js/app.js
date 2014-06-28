@@ -10,9 +10,17 @@ Ext.onReady(function(){
     viewport = Ext.create('Ext.container.Viewport', {
         itemid: 'maincontainer',
         layout: 'card',
+        defaults: {
+            dockedItems: [{
+                xtype: 'maintoolbar',
+                dock: 'top',
+            }]
+        },
         items: [{
             xtype: 'logIn',
+            id: 'logIn',
             title: 'Tablet Choise Admin',
+            dockedItems: {}
         }, {
             xtype: 'itemsList',
             id: 'itemsList',

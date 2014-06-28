@@ -27,7 +27,10 @@ class LogInController(Controller):
         return {'user': username, 'sid': sid}
 
     def logOut(self, params):
+        string_cookie = os.environ.get('HTTP_COOKIE')
         cookie = cookies.SimpleCookie()
+        cookie.load(string_cookie)
+        sid = cookie['sid']
         cookie['sid'] = 0
         cookie['sid']['expires'] = 0
 

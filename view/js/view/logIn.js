@@ -12,14 +12,12 @@ Ext.define('LogIn', {
     items: [{
         fieldLabel: 'Username',
         name: 'username',
-        padding: '100px 0 0 150px',
-        value: 'vankata'
+        padding: '100px 0 0 150px'
     },{
         inputType: 'password',
         fieldLabel: 'Password',
         name: 'password',
-        padding: '10px 0 0 150px',
-        value: '123'
+        padding: '10px 0 0 150px'
     }],
 
     buttons: [{
