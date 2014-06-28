@@ -23,4 +23,18 @@ Ext.onReady(function(){
             title: 'Tablet Choise Admin',
         }]
     });
+
+    Ext.Ajax.request({
+        url: '/cgi-bin/dispatcher.py',
+        params: {
+            controllerClass: 'login',
+            method: 'checkLoggedIn',
+        },
+        success: function(response){
+            var r = JSON.parse(response.responseText);
+            if (r.success){
+                viewport.getLayout().setActiveItem('itemsList');
+            }
+        }
+    });
 });

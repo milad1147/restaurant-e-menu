@@ -1,3 +1,6 @@
+import time
+import datetime
+from config.globals import *
 from .dbhandler import *
 import json
 
@@ -8,11 +11,17 @@ class Session:
         self.sid = sid
         self.dbHandler = DbHandler.getInstance()
         self.cur = self.dbHandler.cur
-        self.cur.execute("""SELECT data FROM `user_session`
+        self.cur.execute("""SELECT data, expires FROM `user_session`
                     WHERE sid='{sid}'
                     """.format(sid=sid))
         if (self.cur.rowcount > 0):
             session = self.cur.fetchone()
+            rawData = session[0]
+            expires = time.mktime(session[1].timetuple())
+            if (time.time() > expires):
+                raise Exception('Session expired')
+            if (rawData is None or rawData == ''):
+                raise Exception('Invalid session')
             self.data = json.loads(session[0])
         else:
             self.cur.execute("""INSERT INTO `user_session` (sid, expires)

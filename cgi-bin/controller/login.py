@@ -43,5 +43,6 @@ class LogInController(Controller):
             cookie.load(string_cookie)
             if 'sid' in cookie.keys():
                 sid = cookie['sid'].value
+                session = Session(sid)
                 return True
-        return False
+        raise PermissionError
