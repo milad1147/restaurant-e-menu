@@ -10,8 +10,6 @@ class Controller:
             params = self.getInputParams(cgiFieldStorage)
             result = getattr(self, methodName)(params)
             return self.resultOut(result)
-        else:
-            return self.errorOut(message)
 
     def checkPermissions(self, methodName):
         return True
@@ -32,14 +30,6 @@ class Controller:
                 result['status'] = data
             else:
                 result['data'] = data
-        return self.out(result)
-
-    def errorOut(self, message=None):
-        result = {
-            'success': False
-        }
-        if message is not None:
-            result['message'] = message
         return self.out(result)
 
     def out(self, result):
